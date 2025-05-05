@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Modelos de Canecas</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #c7df00;
+    }
+
+    header {
+      background-color: #000000;
+      color: #e9471f;
+      padding: 30px 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.2em;
+    }
+
+    .swiper {
+      width: 100%;
+      padding: 40px 0;
+    }
+
+    .swiper-slide {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s;
+      width: 220px;
+    }
+
+    .swiper-slide:hover {
+      transform: scale(1.03);
+    }
+
+    .swiper-slide img {
+      width: 100%;
+      display: block;
+      cursor: pointer;
+    }
+
+    .swiper-slide p {
+      margin: 0;
+      padding: 15px;
+      font-weight: bold;
+      text-align: center;
+      color: #333;
+    }
+
+    .texto-sobreposto {
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.6);
+      color: white;
+      padding: 10px;
+      margin: 0;
+    }
+
+    .imagem-esquerdo {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 150px;
+    }
+
+    .imagem-direito {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 160px;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      z-index: 999;
+    }
+
+    .whatsapp-float:hover {
+      background: #20bd5f;
+    }
+
+    @media (max-width: 600px) {
+      .whatsapp-float {
+        padding: 12px 16px;
+        font-size: 14px;
+      }
+    }
+    .texto-sobreposto h2 {
+  margin-bottom: 5px;
+}
+
+.dica-scroll {
+  font-size: 14px;
+  color: #ddd;
+  margin: 0;
+}
+
+
+    /* Estilo do modal de imagem */
+    #imageModal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      z-index: 1000;
+      display: none;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #imageModal img {
+      display: block;
+      max-width: 90%;
+      max-height: 90vh;
+      margin: 60px auto;
+      border-radius: 10px;
+    }
+
+    #closeBtn {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 40px;
+      color: white;
+      cursor: pointer;
+      z-index: 1001;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Modelos de Canecas</h1>
+  <p>Confira nossos modelos incríveis e personalizados!</p>
+  <img src="img/Imagem_do_WhatsApp_de_2025-04-01_à_s__13.27.39_30afbd9e__1_-removebg-preview.png" alt="Logo Esquerda" class="imagem-esquerdo" />
+  <img src="img/Imagem_do_WhatsApp_de_2025-04-01_à_s__13.27.39_721b2ce7__1_-removebg-preview.png" alt="Logo Direita" class="imagem-direito" />
+</header>
+
+<!-- Modal para ampliar imagem -->
+<div id="imageModal" onclick="closeModal()">
+  <span id="closeBtn">&times;</span>
+  <img id="modalImage" src="" alt="Imagem ampliada" />
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".swiper").forEach(swiperContainer => {
+      new Swiper(swiperContainer, {
+        slidesPerView: 'auto',
+        spaceBetween: 20,
+        grabCursor: true,
+      });
+    });
+
+    // Adiciona funcionalidade de clique nas imagens
+    document.querySelectorAll(".swiper-slide img").forEach(img => {
+      img.addEventListener("click", function () {
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImage");
+        modalImg.src = this.src;
+        modal.style.display = "flex";
+      });
+    });
+  });
+
+  function closeModal() {
+    document.getElementById("imageModal").style.display = "none";
+  }
+</script>
+
+<!-- Seções de carrossel -->
+<script>
+  
+  const secoes = [
+    { titulo: "Anime ---->", imagens: [
+      {src: "img/animes/Naruto.png", texto: "Naruto"},
+      {src: "img/animes/Naruto 1.png", texto: "Naruto 1"},
+      {src: "img/animes/jujutsu kaisen.png", texto: "jujutsu kaisen"},
+      {src: "img/animes/dragon ball.png", texto: "dragon ball"},
+      {src: "img/animes/one piece.png", texto: "one piece"},
+      {src: "img/animes/pokemon.png", texto: "pokemon"},
+      {src: "img/animes/Pokemon froid.png", texto: "Pokemon froid"}
+    ] },
+    { titulo: "Aniversário ---->", imagens: [
+      {src: "img/aniversario/Aniversario.png", texto: "Aniversário 1"},
+      {src: "img/aniversario/Aniversario 2.png", texto: "Aniversário 2"},
+      {src: "img/aniversario/Caneca Panorâmica aniversário infantil polaroid e fotografia.png", texto: "Aniversário 3"},
+      {src: "img/aniversario/Caneca Panorâmica aniversário infantil polaroid e fotografia.png", texto: "Aniversário 4"},
+      {src: "img/aniversario/Aniversario 5.png", texto: "Aniversário 5"},
+      {src: "img/aniversario/Aniversario 6.png", texto: "Aniversário 6"},
+      {src: "img/aniversario/Aniversario 7.png", texto: "Aniversário 7"},
+      {src: "img/aniversario/Aniversario 8.png", texto: "Aniversário 8"}
+    ] },
+    { titulo: "Café ---->", imagens: [
+      {src: "img/cafe/cafe.png", texto: "Café"},
+      {src: "img/cafe/café 1.png", texto: "Café 1"},
+      {src: "img/cafe/café 2.png", texto: "Café 2"},
+      {src: "img/cafe/café 3.png", texto: "Café 3"},
+      {src: "img/cafe/café 4.png", texto: "Café 4"},
+      {src: "img/cafe/café 5.png", texto: "Café 5"},
+      {src: "img/cafe/café 6.png", texto: "Café 6"},
+      {src: "img/cafe/café 7.png", texto: "Café 7"},
+      {src: "img/cafe/café 8.png", texto: "Café 8"}
+    ] },
+    { titulo: "Datas comemorativas ---->", imagens: [
+      {src: "img/Datas comemorativas/Amamos você.png", texto: "Amamos você"},
+      {src: "img/Datas comemorativas/Dia dos namorados.png", texto: "Namorado"},
+      {src: "img/Datas comemorativas/Dia dos país.png", texto: "Pais"},
+      {src: "img/Datas comemorativas/Filha.png", texto: "Filha"},
+      {src: "img/Datas comemorativas/Meu amor.png", texto: "Meu amor"},
+      {src: "img/Datas comemorativas/mãe.png", texto: "Mãe"},
+      {src: "img/Datas comemorativas/Presente.png", texto: "Presente"},
+      {src: "img/Datas comemorativas/Professora.png", texto: "Professora"}
+    ] },
+    { titulo: "Divertidamente ---->", imagens: [
+      {src: "img/divertidamente/anseiedadew.png", texto: "Ansiedade"},
+      {src: "img/divertidamente/nojinho.png", texto: "Nojinho"},
+      {src: "img/divertidamente/raiva.png", texto: "Raiva"},
+      {src: "img/divertidamente/tristeza.png", texto: "Tristeza"}
+    ] },
+    { titulo: "Frases ---->", imagens: [
+      {src: "img/Fraes/Borboleta.png", texto: "Borboleta"},
+      {src: "img/Fraes/cacto.png", texto: "Cacto"},
+      {src: "img/Fraes/café zumbi.png", texto: "Café Zumbi"},
+      {src: "img/Fraes/Coragem.png", texto: "Coragem"},
+      {src: "img/Fraes/Cuidar de si.png", texto: "Cuidar de si"},
+      {src: "img/Fraes/fofoca.png", texto: "Fofoca"},
+      {src: "img/Fraes/Fé.png", texto: "Fé"},
+      {src: "img/Fraes/Girasol.png", texto: "Girassol"},
+      {src: "img/Fraes/raio de sol.png", texto: "Raio de sol"},
+      {src: "img/Fraes/saudades.png", texto: "Saudades"}
+    ] },
+    { titulo: "Games ---->", imagens: [
+      {src: "img/games/games.png", texto: "Games"},
+      {src: "img/games/73.png", texto: "Games"},
+      {src: "img/games/Mario 1.png", texto: "Games"},
+      {src: "img/games/mario 2.png", texto: "Games"},
+      {src: "img/games/Mario 3.png", texto: "Games"},
+      {src: "img/games/Minecraft logo.png"N, texto: "Games"},
+      {src: "img/games/Minecraft-crepper.png", texto: "Games"},
+      {src: "img/games/Pac-Man.png", texto: "Games"},
+      {src: "img/games/Player Fem.png", texto: "Games"},
+      {src: "img/games/Player Mas.png", texto: "Games"},
+      {src: "img/games/Stardew.png", texto: "Games"}
+      
+    ] },
+    { titulo: "Gatos ---->", imagens: [
+      {src: "img/gato/café e gato.png", texto: "Café e gato"},
+      {src: "img/gato/gatinho.png", texto: "Gatinho"},
+      {src: "img/gato/gatinho 2.png", texto: "Gatinho 2"}
+    ] },
+    { titulo: "Oxum ---->", imagens: [
+      {src: "img/oxum/ogunhe.png", texto: "Ogunhê"},
+      {src: "img/oxum/seria.png", texto: "Sereia"}
+    ] },
+    { titulo: "Madrinha ---->", imagens: [
+      {src: "img/pedidos madrinha/madrinha 1.png", texto: "Madrinha 1"},
+      {src: "img/pedidos madrinha/madrinha 2.png", texto: "Madrinha 2"}
+    ] },
+    { titulo: "Signo ---->", imagens: [
+      {src: "img/signo/1.png", texto: "Áries"},
+      {src: "img/signo/2.png", texto: "Touro"},
+      {src: "img/signo/3.png", texto: "Gêmeos"},
+      {src: "img/signo/4.png", texto: "Câncer"},
+      {src: "img/signo/5.png", texto: "Leão"},
+      {src: "img/signo/6.png", texto: "Virgem"},
+      {src: "img/signo/7.png", texto: "Libra"},
+      {src: "img/signo/8.png", texto: "Escorpião"},
+      {src: "img/signo/9.png", texto: "Sagitário"},
+      {src: "img/signo/10.png", texto: "Capricórnio"},
+      {src: "img/signo/11.png", texto: "Aquario"},
+      {src: "img/signo/12.png", texto: "Peixes"}
+    ] }
+    
+  ];
+
+  secoes.forEach(secao => {
+    document.write(`
+  <div class='texto-sobreposto'>
+    <h2>${secao.titulo}</h2>
+    <p class="dica-scroll">Arraste para o lado → para ver mais modelos</p>
+  </div>
+`);
+
+    document.write(`<div class='swiper'><div class='swiper-wrapper'>`);
+      
+    secao.imagens.forEach(img => {
+      document.write(`<div class='swiper-slide'><img src='${img.src}' alt='${img.texto}'/><p>${img.texto}</p></div>`);
+    });
+    document.write(`</div></div>`);
+  });
+</script>
+
+<a class="whatsapp-float" href="https://wa.me/5519997338712?" target="_blank">
+  Dúvidas pelo WhatsApp
+</a>
+
+</body>
+</html>
