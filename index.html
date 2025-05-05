@@ -13,7 +13,7 @@
     }
 
     header {
-      background-color: #000;
+      background-color: #000000;
       color: #e9471f;
       padding: 30px 20px;
       text-align: center;
@@ -65,29 +65,18 @@
       margin: 0;
     }
 
-    .texto-sobreposto h2 {
-      margin-bottom: 5px;
-    }
-
-    .dica-scroll {
-      font-size: 14px;
-      color: #ddd;
-      margin: 0;
-    }
-
-    .imagem-esquerdo,
-    .imagem-direito {
+    .imagem-esquerdo {
       position: absolute;
       top: 0;
+      left: 0;
       width: 150px;
     }
 
-    .imagem-esquerdo {
-      left: 0;
-    }
-
     .imagem-direito {
+      position: absolute;
+      top: 0;
       right: 0;
+      width: 160px;
     }
 
     .whatsapp-float {
@@ -107,29 +96,6 @@
     .whatsapp-float:hover {
       background: #20bd5f;
     }
-    .imagem-esquerdo,
-.imagem-direito {
-  position: absolute;
-  top: 0;
-  width: 15%; /* Ajuste da largura para 15% da largura da tela */
-  max-width: 200px; /* Define um limite máximo de largura */
-  height: auto;
-}
-
-@media (max-width: 768px) {
-  .imagem-esquerdo,
-  .imagem-direito {
-    width: 25%; /* Em telas menores, aumenta para 25% */
-  }
-}
-
-@media (max-width: 480px) {
-  .imagem-esquerdo,
-  .imagem-direito {
-    width: 35%; /* Em telas muito pequenas, aumenta para 35% */
-  }
-}
-
 
     @media (max-width: 600px) {
       .whatsapp-float {
@@ -137,7 +103,18 @@
         font-size: 14px;
       }
     }
+    .texto-sobreposto h2 {
+  margin-bottom: 5px;
+}
 
+.dica-scroll {
+  font-size: 14px;
+  color: #ddd;
+  margin: 0;
+}
+
+
+    /* Estilo do modal de imagem */
     #imageModal {
       position: fixed;
       top: 0;
@@ -152,8 +129,10 @@
     }
 
     #imageModal img {
+      display: block;
       max-width: 90%;
       max-height: 90vh;
+      margin: 60px auto;
       border-radius: 10px;
     }
 
@@ -164,6 +143,7 @@
       font-size: 40px;
       color: white;
       cursor: pointer;
+      z-index: 1001;
     }
   </style>
 </head>
@@ -182,13 +162,36 @@
   <img id="modalImage" src="" alt="Imagem ampliada" />
 </div>
 
-<!-- Container para seções -->
-<div id="secoes-container"></div>
-
-<a class="whatsapp-float" href="https://wa.me/5519997338712?" target="_blank">Dúvidas pelo WhatsApp</a>
-
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".swiper").forEach(swiperContainer => {
+      new Swiper(swiperContainer, {
+        slidesPerView: 'auto',
+        spaceBetween: 20,
+        grabCursor: true,
+      });
+    });
+
+    // Adiciona funcionalidade de clique nas imagens
+    document.querySelectorAll(".swiper-slide img").forEach(img => {
+      img.addEventListener("click", function () {
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImage");
+        modalImg.src = this.src;
+        modal.style.display = "flex";
+      });
+    });
+  });
+
+  function closeModal() {
+    document.getElementById("imageModal").style.display = "none";
+  }
+</script>
+
+<!-- Seções de carrossel -->
+<script>
+  
   const secoes = [
     { titulo: "Anime ---->", imagens: [
       {src: "img/animes/Naruto.png", texto: "Naruto"},
@@ -211,7 +214,7 @@
     ] },
     { titulo: "Café ---->", imagens: [
       {src: "img/cafe/cafe.png", texto: "Café"},
-      {src: "img/cafe/Café1.png", texto: "Café 1"},
+      {src: "img/cafe/café 1.png", texto: "Café 1"},
       {src: "img/cafe/café 2.png", texto: "Café 2"},
       {src: "img/cafe/café 3.png", texto: "Café 3"},
       {src: "img/cafe/café 4.png", texto: "Café 4"},
@@ -240,59 +243,78 @@
       {src: "img/Fraes/Borboleta.png", texto: "Borboleta"},
       {src: "img/Fraes/cacto.png", texto: "Cacto"},
       {src: "img/Fraes/café zumbi.png", texto: "Café Zumbi"},
-      {src: "img/Fraes/Coragem.png", texto: "Coragem"}
+      {src: "img/Fraes/Coragem.png", texto: "Coragem"},
+      {src: "img/Fraes/Cuidar de si.png", texto: "Cuidar de si"},
+      {src: "img/Fraes/fofoca.png", texto: "Fofoca"},
+      {src: "img/Fraes/Fé.png", texto: "Fé"},
+      {src: "img/Fraes/Girasol.png", texto: "Girassol"},
+      {src: "img/Fraes/raio de sol.png", texto: "Raio de sol"},
+      {src: "img/Fraes/saudades.png", texto: "Saudades"}
+    ] },
+    { titulo: "Games ---->", imagens: [
+      {src: "img/games/games.png", texto: "Games"},
+      {src: "img/games/73.png", texto: "Games"},
+      {src: "img/games/Mario 1.png", texto: "Games"},
+      {src: "img/games/mario 2.png", texto: "Games"},
+      {src: "img/games/Mario 3.png", texto: "Games"},
+      {src: "img/games/Minecraft logo.png", texto: "Games"},
+      {src: "img/games/Minecraft-crepper.png", texto: "Games"},
+      {src: "img/games/Pac-Man.png", texto: "Games"},
+      {src: "img/games/Player Fem.png", texto: "Games"},
+      {src: "img/games/Player Mas.png", texto: "Games"},
+      {src: "", texto: "Games"}
+      
+    ] },
+    { titulo: "Gatos ---->", imagens: [
+      {src: "img/gato/café e gato.png", texto: "Café e gato"},
+      {src: "img/gato/gatinho.png", texto: "Gatinho"},
+      {src: "img/gato/gatinho 2.png", texto: "Gatinho 2"}
+    ] },
+    { titulo: "Oxum ---->", imagens: [
+      {src: "img/oxum/ogunhe.png", texto: "Ogunhê"},
+      {src: "img/oxum/seria.png", texto: "Sereia"}
+    ] },
+    { titulo: "Madrinha ---->", imagens: [
+      {src: "img/pedidos madrinha/madrinha 1.png", texto: "Madrinha 1"},
+      {src: "img/pedidos madrinha/madrinha 2.png", texto: "Madrinha 2"}
+    ] },
+    { titulo: "Signo ---->", imagens: [
+      {src: "img/signo/1.png", texto: "Áries"},
+      {src: "img/signo/2.png", texto: "Touro"},
+      {src: "img/signo/3.png", texto: "Gêmeos"},
+      {src: "img/signo/4.png", texto: "Câncer"},
+      {src: "img/signo/5.png", texto: "Leão"},
+      {src: "img/signo/6.png", texto: "Virgem"},
+      {src: "img/signo/7.png", texto: "Libra"},
+      {src: "img/signo/8.png", texto: "Escorpião"},
+      {src: "img/signo/9.png", texto: "Sagitário"},
+      {src: "img/signo/10.png", texto: "Capricórnio"},
+      {src: "img/signo/11.png", texto: "Aquario"},
+      {src: "img/signo/12.png", texto: "Peixes"}
     ] }
+    
   ];
 
-  const container = document.getElementById("secoes-container");
-
   secoes.forEach(secao => {
-    const tituloHTML = `
-      <div class='texto-sobreposto'>
-        <h2>${secao.titulo}</h2>
-        <p class="dica-scroll">Arraste para o lado → para ver mais modelos</p>
-      </div>
-    `;
+    document.write(`
+  <div class='texto-sobreposto'>
+    <h2>${secao.titulo}</h2>
+    <p class="dica-scroll">Arraste para o lado → para ver mais modelos</p>
+  </div>
+`);
 
-    const imagensHTML = secao.imagens.map(img => `
-      <div class='swiper-slide'>
-        <img src='${img.src}' alt='${img.texto}'/>
-        <p>${img.texto}</p>
-      </div>
-    `).join("");
-
-    const swiperHTML = `
-      <div class='swiper'>
-        <div class='swiper-wrapper'>
-          ${imagensHTML}
-        </div>
-      </div>
-    `;
-
-    container.insertAdjacentHTML("beforeend", tituloHTML + swiperHTML);
-  });
-
-  document.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll(".swiper").forEach(swiperContainer => {
-      new Swiper(swiperContainer, {
-        slidesPerView: 'auto',
-        spaceBetween: 20,
-        grabCursor: true
-      });
+    document.write(`<div class='swiper'><div class='swiper-wrapper'>`);
+      
+    secao.imagens.forEach(img => {
+      document.write(`<div class='swiper-slide'><img src='${img.src}' alt='${img.texto}'/><p>${img.texto}</p></div>`);
     });
-
-    document.querySelectorAll(".swiper-slide img").forEach(img => {
-      img.addEventListener("click", function () {
-        document.getElementById("modalImage").src = this.src;
-        document.getElementById("imageModal").style.display = "flex";
-      });
-    });
+    document.write(`</div></div>`);
   });
-
-  function closeModal() {
-    document.getElementById("imageModal").style.display = "none";
-  }
 </script>
+
+<a class="whatsapp-float" href="https://wa.me/5519997338712?" target="_blank">
+  Dúvidas pelo WhatsApp
+</a>
 
 </body>
 </html>
