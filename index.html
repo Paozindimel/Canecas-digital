@@ -107,6 +107,29 @@
     .whatsapp-float:hover {
       background: #20bd5f;
     }
+    .imagem-esquerdo,
+.imagem-direito {
+  position: absolute;
+  top: 0;
+  width: 15%; /* Ajuste da largura para 15% da largura da tela */
+  max-width: 200px; /* Define um limite máximo de largura */
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .imagem-esquerdo,
+  .imagem-direito {
+    width: 25%; /* Em telas menores, aumenta para 25% */
+  }
+}
+
+@media (max-width: 480px) {
+  .imagem-esquerdo,
+  .imagem-direito {
+    width: 35%; /* Em telas muito pequenas, aumenta para 35% */
+  }
+}
+
 
     @media (max-width: 600px) {
       .whatsapp-float {
